@@ -4,6 +4,15 @@
   box-sizing: border-box;
 }
 
+:root {
+  /* Colores principales */
+  --color-fondo: #FAF9F6;          /* Blanco crema */
+  --color-presentacion: #F0ECE5;   /* Blanco beige */
+  --color-secundario: #EAE3D8;     /* Beige claro */
+  --color-acento: #A58C73;        /* Café con leche */
+  --color-texto: #342F2B;         /* Marrón oscuro */
+}
+
 body {
   font-family: "Liberation Sans", Arial, sans-serif;
 }

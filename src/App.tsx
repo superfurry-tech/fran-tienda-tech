@@ -1,5 +1,8 @@
 import './App.css'
 
+// Para gestionar valores que cambian en el componente.
+import { useState } from 'react'
+
 // Array de objetos con los datos de nuestros productos.
 const productos = [
   { id: 1, nombre: "Rode PodMic", precio: 110, imagen: "/images/micro1.jpg" },
@@ -14,10 +17,41 @@ const productos = [
   { id: 10, nombre: "Auralex Roominator-DST Kit", precio: 1220, imagen: "/images/accesorio3.jpg" }
 ]
 
+// Cada elemento es un string, no hay necesidad de crear objetos como en el array de productos
+const imagenes = [
+  "/images/portada_1.png",
+  "/images/portada_2.png",
+  "/images/portada_3.png"
+]
+
 // Componente principal de la tienda.
 // .map() recorre el array y genera un elemento React <Producto /> por cada producto.
 function App() {
   const nombre = 'Mi PC'
+
+  // Índice de la imagen que se muestra en el carrusel. Inicialmente es la primera (0).
+  const [indice, setIndice] = useState(0)
+
+  // Avanza a la siguiente imagen. Si estamos en la última, vuelve a la primera.
+  function siguienteImagen() {
+    if (indice === imagenes.length - 1) {
+      setIndice(0)
+    } else {
+      setIndice(indice + 1)
+    }
+  }
+
+  // Retrocede una imagen. Si estamos en la primera, pasa a la última.
+  function anteriorImagen() {
+    if (indice === 0) {
+      setIndice(imagenes.length - 1)
+    } else {
+      setIndice(indice - 1)
+    }
+  }
+
+
+
 
   return (
     <>
@@ -25,8 +59,32 @@ function App() {
         <h1>{nombre}</h1>
       </header>
       <main>
+        <section className="presentacion">
+          <div className="contenido-presentacion">
+
+            <div>
+              <h2>Bienvenido a {nombre}</h2>
+              <p>Monta tu propio estudio de podcast en casa. Micrófonos, auriculares, accesorios y kits completos.</p>
+            </div>
+
+            <div className="carrusel">
+              <img src={imagenes[indice]} alt="Estudio casero de podcast" />
+              <div className="botones-carrusel">
+                <button onClick={anteriorImagen} aria-label="Imagen anterior">←</button>
+                <button onClick={siguienteImagen} aria-label="Imagen siguiente">→</button>
+              </div>
+              <div className="indicadores-carrusel">
+                {/* Si el índice coincide con la imagen actual, añade la clase "activo", que cambia el color en CSS. */}
+                <span className={indice === 0 ? "activo" : ""}></span>
+                <span className={indice === 1 ? "activo" : ""}></span>
+                <span className={indice === 2 ? "activo" : ""}></span>
+              </div>
+            </div>
+
+          </div>
+        </section>
         <section>
-          <h2>Productos destacados</h2>
+          <h2>Catálogo de productos</h2>
           <div className="lista-productos">
             {productos.map(producto => (
               <Producto

@@ -38,6 +38,39 @@ footer {
   margin-top: 0.4rem;
 }
 
+.contenido-presentacion {
+  display: flex;
+  align-items: center;
+  width: 94%;
+  max-width: 90rem;
+  margin: 0 auto;
+}
+
+/* Primer div recibe una parte del espacio */
+.contenido-presentacion>div:first-child {
+  flex: 1;
+}
+
+/* Segundo div recibe una parte y media del espacio */
+.contenido-presentacion>div:last-child {
+  flex: 1.5;
+}
+
+/* Se elimina limitación a los divs para encogerse. */
+.contenido-presentacion>div {
+  min-width: 0;
+}
+
+/* Fotos se adaptan al ancho disponible */
+.presentacion img {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+
+
 @media (max-width: 1100px) {
   .lista-productos {
     grid-template-columns: repeat(3, 1fr);
@@ -54,4 +87,81 @@ footer {
   .lista-productos {
     grid-template-columns: 1fr;
   }
+}
+
+.carrusel {
+  position: relative;
+}
+
+.botones-carrusel {
+  position: absolute;
+  /* El contenedor de los botones ocupa toda la superficie del carrusel */
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+}
+
+.botones-carrusel button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.indicadores-carrusel {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.indicadores-carrusel span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-fondo);
+}
+
+.indicadores-carrusel span.activo {
+  background-color: var(--color-acento);
+}
+
+
+
+
+
+
+
+/* =========================================
+   TEMPORAL - BORRAR DESPUÉS
+   Bordes para identificar los contenedores
+   ========================================= */
+
+/* Sección completa de presentación */
+.presentacion {
+  outline: 3px solid red;
+}
+
+/* Contenedor que agrupa texto e imagen */
+.contenido-presentacion {
+  outline: 3px solid blue;
+}
+
+/* Div del texto */
+.contenido-presentacion>div:first-child {
+  outline: 3px solid green;
+}
+
+/* Div de la imagen y los botones */
+.contenido-presentacion>div:last-child {
+  outline: 3px solid orange;
 }
