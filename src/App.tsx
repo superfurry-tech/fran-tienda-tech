@@ -1,4 +1,5 @@
 import './App.css'
+import { BsArrowLeft, BsArrowRight, BsCart3 } from "react-icons/bs";
 
 // Para gestionar valores que cambian en el componente.
 import { useState } from 'react'
@@ -17,17 +18,24 @@ const productos = [
   { id: 10, nombre: "Auralex Roominator-DST Kit", precio: 1220, imagen: "/images/accesorio3.jpg" }
 ]
 
-// Cada elemento es un string, no hay necesidad de crear objetos como en el array de productos
+// Rutas de las imágenes del carrusel, almacenadas en un array de strings. Cada elemento es un string, no hay necesidad de crear objetos como en el array de productos.
 const imagenes = [
   "/images/portada_1.png",
   "/images/portada_2.png",
   "/images/portada_3.png"
 ]
 
+//Textos que corresponden a las imágenes del carrusel. Cada texto ocupa la misma posición que su imagen en el array imagenes.
+const etiquetas = [
+  "CREA TU PROPIO ESTUDIO",
+  "NOVEDAD",
+  "OFERTA"
+]
+
 // Componente principal de la tienda.
 // .map() recorre el array y genera un elemento React <Producto /> por cada producto.
 function App() {
-  const nombre = 'Mi PC'
+  const nombre = 'Mi Podcast'
 
   // Índice de la imagen que se muestra en el carrusel. Inicialmente es la primera (0).
   const [indice, setIndice] = useState(0)
@@ -56,7 +64,17 @@ function App() {
   return (
     <>
       <header>
-        <h1>{nombre}</h1>
+        <div className="marca">
+          <img src="/images/onda-estudio-icono.png" alt="" />
+          <h1>{nombre}</h1>
+        </div>
+
+        <nav aria-label="Navegación principal">
+          <a href="/">Inicio</a>
+          <a href="/productos">Productos</a>
+          <a href="/carrito" aria-label="Carrito">
+            <BsCart3 aria-hidden="true" /></a>
+        </nav>
       </header>
       <main>
         <section className="presentacion">
@@ -68,10 +86,27 @@ function App() {
             </div>
 
             <div className="carrusel">
+              {/* Muestra la imagen correspondiente al índice actual. */}
               <img src={imagenes[indice]} alt="Estudio casero de podcast" />
+              {/* Muestra el texto que corresponde a esa misma imagen. */}
+              <div className="etiqueta-carrusel">
+                <p>{etiquetas[indice]}</p>
+
+                {/* && significa 'mostrar solo si cumple la condición'. */}
+                {indice === 1 && <p className="nombre-carrusel"><strong>AKG K-702</strong></p>}
+
+                {indice === 2 && (
+                  <>
+                    <p className="nombre-carrusel"><strong>Rode PodMic USB</strong></p>
+                    <p className="nombre-carrusel">
+                      <del>200 €</del> <strong>177 €</strong>
+                    </p>
+                  </>
+                )}
+              </div>
               <div className="botones-carrusel">
-                <button onClick={anteriorImagen} aria-label="Imagen anterior">←</button>
-                <button onClick={siguienteImagen} aria-label="Imagen siguiente">→</button>
+                <button onClick={anteriorImagen} aria-label="Imagen anterior"><BsArrowLeft /></button>
+                <button onClick={siguienteImagen} aria-label="Imagen siguiente"><BsArrowRight /></button>
               </div>
               <div className="indicadores-carrusel">
                 {/* Si el índice coincide con la imagen actual, añade la clase "activo", que cambia el color en CSS. */}
@@ -98,7 +133,7 @@ function App() {
       </main>
 
       <footer>
-        <p>© 2026 Mi PC. Todos los derechos reservados.</p>
+        <p>© 2026 Mi Podcast. Todos los derechos reservados.</p>
       </footer>
 
     </>
