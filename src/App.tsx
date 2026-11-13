@@ -1,5 +1,11 @@
 import './App.css'
-import { BsArrowLeft, BsArrowRight, BsCart3 } from "react-icons/bs";
+import {
+  BsArrowLeft,
+  BsArrowRight,
+  BsCart3,
+  BsInstagram,
+  BsYoutube
+} from "react-icons/bs";
 
 // Para gestionar valores que cambian en el componente.
 import { useState } from 'react'
@@ -133,7 +139,32 @@ function App() {
       </main>
 
       <footer>
-        <p>© 2026 Mi Podcast. Todos los derechos reservados.</p>
+        <div className="contenido-footer">
+          <div>
+            <h2>{nombre}</h2>
+          </div>
+
+          <div>
+            <h3>Información</h3>
+            <p>Contacto</p>
+            <p><a>Envíos y devoluciones</a></p>
+            <p><a>Garantía</a></p>
+            <p><a>Política de privacidad</a></p>
+          </div>
+
+          <div className="copyright">
+            <div className="redes-sociales">
+              <a aria-label="Instagram">
+                <BsInstagram aria-hidden="true" />
+              </a>
+              <a aria-label="YouTube">
+                <BsYoutube aria-hidden="true" />
+              </a>
+            </div>
+            <p>© 2026 {nombre} · Proyecto académico</p>
+            <p>Tu estudio de podcast empieza aquí.</p>
+          </div>
+        </div>
       </footer>
 
     </>
