@@ -5,12 +5,20 @@
 }
 
 :root {
-  /* Colores principales */
-  --color-fondo: #FAF9F6;          /* Blanco crema */
-  --color-presentacion: #F0ECE5;   /* Blanco beige */
-  --color-secundario: #EAE3D8;     /* Beige claro */
-  --color-acento: #A58C73;        /* Café con leche */
-  --color-texto: #342F2B;         /* Marrón oscuro */
+  /* Crema casi blanco: fondo principal y catálogo */
+  --color-fondo: #FCF9F5;
+
+  /* Crema cálido muy claro: sección de bienvenida */
+  --color-presentacion: #F8F2EC;
+
+  /* Beige tostado: header y footer */
+  --color-secundario: #E2CDB9;
+
+  /* Marrón de acento: detalles y efectos al pasar el ratón */
+  --color-acento: #986237;
+
+  /* Marrón oscuro: texto principal */
+  --color-texto: #30251D;
 }
 
 body {

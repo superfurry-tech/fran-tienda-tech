@@ -10,19 +10,9 @@ import {
 // Para gestionar valores que cambian en el componente.
 import { useState } from 'react'
 
-// Array de objetos con los datos de nuestros productos.
-const productos = [
-  { id: 1, nombre: "Rode PodMic", precio: 110, imagen: "/images/micro1.jpg" },
-  { id: 2, nombre: "t.bone BC 500 Bundle", precio: 119, imagen: "/images/micro2.jpg" },
-  { id: 3, nombre: "Rode PodMic USB", precio: 177, imagen: "/images/micro3.jpg" },
-  { id: 4, nombre: "AKG K-702", precio: 179, imagen: "/images/auriculares1.jpg" },
-  { id: 5, nombre: "Sennheiser HD-480 PRO Plus", precio: 435, imagen: "/images/auriculares2.jpg" },
-  { id: 6, nombre: "t.bone SC 420 USB Kit", precio: 199, imagen: "/images/set1.jpg" },
-  { id: 7, nombre: "t.bone MB 7 Beta Kit", precio: 304, imagen: "/images/set2.jpg" },
-  { id: 8, nombre: "K&M 25995 Soporte", precio: 59, imagen: "/images/accesorio1.jpg" },
-  { id: 9, nombre: "Filtro antipop PS-1", precio: 56, imagen: "/images/accesorio2.jpg" },
-  { id: 10, nombre: "Auralex Roominator-DST Kit", precio: 1220, imagen: "/images/accesorio3.jpg" }
-]
+// Carga los datos de los productos desde el archivo JSON.
+import productos from './data/productos.json'
+
 
 // Rutas de las imágenes del carrusel, almacenadas en un array de strings. Cada elemento es un string, no hay necesidad de crear objetos como en el array de productos.
 const imagenes = [
@@ -86,7 +76,7 @@ function App() {
         <section className="presentacion">
           <div className="contenido-presentacion">
 
-            <div>
+            <div className="texto-presentacion">
               <h2>Bienvenido a {nombre}</h2>
               <p>Monta tu propio estudio de podcast en casa. Micrófonos, auriculares, accesorios y kits completos.</p>
             </div>
@@ -96,14 +86,23 @@ function App() {
               <img src={imagenes[indice]} alt="Estudio casero de podcast" />
               {/* Muestra el texto que corresponde a esa misma imagen. */}
               <div className="etiqueta-carrusel">
-                <p>{etiquetas[indice]}</p>
+                {/* La primera imagen no necesita otra clase. En NOVEDAD y OFERTA añadimos una clase para darles un estilo distinto. */}
+                <p className={indice === 0 ? "" : "tipo-promocion"}>
+                  {etiquetas[indice]}
+                </p>
 
                 {/* && significa 'mostrar solo si cumple la condición'. */}
-                {indice === 1 && <p className="nombre-carrusel"><strong>AKG K-702</strong></p>}
+                {/* Conserva el estilo común y añade otro para destacar el nombre */}
+                {indice === 1 && <p className="nombre-carrusel titulo-producto-carrusel">
+                  <strong>AKG K-702</strong>
+                </p>}
 
                 {indice === 2 && (
                   <>
-                    <p className="nombre-carrusel"><strong>Rode PodMic USB</strong></p>
+                    {/* Conserva el estilo común y añade otro para destacar el nombre */}
+                    <p className="nombre-carrusel titulo-producto-carrusel">
+                      <strong>Rode PodMic USB</strong>
+                    </p>
                     <p className="nombre-carrusel">
                       <del>200 €</del> <strong>177 €</strong>
                     </p>
@@ -124,7 +123,7 @@ function App() {
 
           </div>
         </section>
-        <section>
+        <section className="catalogo">
           <h2>Catálogo de productos</h2>
           <div className="lista-productos">
             {productos.map(producto => (
@@ -162,7 +161,7 @@ function App() {
               </a>
             </div>
             <p>© 2026 {nombre} · Proyecto académico</p>
-            <p>Tu estudio de podcast empieza aquí.</p>
+            <p><em>Tu estudio de podcast empieza aquí.</em></p>
           </div>
         </div>
       </footer>

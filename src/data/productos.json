@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "nombre": "Rode PodMic",
+    "precio": 110,
+    "imagen": "/images/micro1.jpg",
+    "descripcion": "Micrófono para grabar voz y crear contenido de podcast."
+  },
+  {
+    "id": 2,
+    "nombre": "t.bone BC 500 Bundle",
+    "precio": 119,
+    "imagen": "/images/micro2.jpg",
+    "descripcion": "Conjunto de micrófono y accesorios para preparar tu espacio de grabación de voz."
+  },
+  {
+    "id": 3,
+    "nombre": "Rode PodMic USB",
+    "precio": 177,
+    "imagen": "/images/micro3.jpg",
+    "descripcion": "Micrófono con conexión USB para grabar voz y podcast desde el ordenador."
+  },
+  {
+    "id": 4,
+    "nombre": "AKG K-702",
+    "precio": 179,
+    "imagen": "/images/auriculares1.jpg",
+    "descripcion": "Auriculares para escuchar grabaciones y revisar la edición de audio."
+  },
+  {
+    "id": 5,
+    "nombre": "Sennheiser HD-480 PRO Plus",
+    "precio": 435,
+    "imagen": "/images/auriculares2.jpg",
+    "descripcion": "Auriculares para escuchar y revisar el sonido de tus grabaciones de voz y música."
+  },
+  {
+    "id": 6,
+    "nombre": "t.bone SC 420 USB Kit",
+    "precio": 199,
+    "imagen": "/images/set1.jpg",
+    "descripcion": "Kit de micrófono USB y accesorios para empezar a grabar voz en casa."
+  },
+  {
+    "id": 7,
+    "nombre": "t.bone MB 7 Beta Kit",
+    "precio": 304,
+    "imagen": "/images/set2.jpg",
+    "descripcion": "Kit de micrófono y accesorios para montar un espacio de podcast y grabación de voz."
+  },
+  {
+    "id": 8,
+    "nombre": "K&M 25995 Soporte",
+    "precio": 59,
+    "imagen": "/images/accesorio1.jpg",
+    "descripcion": "Soporte de sobremesa para colocar el micrófono en tu espacio de grabación."
+  },
+  {
+    "id": 9,
+    "nombre": "Filtro antipop PS-1",
+    "precio": 56,
+    "imagen": "/images/accesorio2.jpg",
+    "descripcion": "Filtro antipop para suavizar los golpes de aire al hablar delante del micrófono."
+  },
+  {
+    "id": 10,
+    "nombre": "Auralex Roominator-DST Kit",
+    "precio": 1220,
+    "imagen": "/images/accesorio3.jpg",
+    "descripcion": "Kit de tratamiento acústico para reducir las reflexiones del sonido en la habitación."
+  }
+]

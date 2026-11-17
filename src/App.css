@@ -51,7 +51,11 @@ header nav a:hover {
 
 
 main {
-  background-color: #FAF9F6;
+  background-color: var(--color-fondo);
+}
+
+.presentacion {
+  background-color: var(--color-presentacion);
 }
 
 footer {
@@ -120,8 +124,6 @@ footer {
   grid-template-columns: repeat(5, 1fr);
   column-gap: 15px;
   row-gap: 55px;
-  max-width: 1300px;
-  margin: 0 auto;
 }
 
 .tarjeta-producto img {
@@ -146,6 +148,22 @@ footer {
   /* Nunca supera los 90rem */
   max-width: 90rem;
   margin: 0 auto;
+}
+
+.texto-presentacion {
+  padding: 2rem;
+  color: var(--color-texto);
+}
+
+.texto-presentacion h2 {
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.texto-presentacion p {
+  font-size: 1.125rem;
+  line-height: 1.6;
 }
 
 /* Primer div recibe una parte del espacio */
@@ -261,6 +279,20 @@ footer {
   font-weight: normal;
 }
 
+/* NOVEDAD y OFERTA: etiquetas pequeñas con letras algo separadas */
+/* Destaca la promoción sin superar al nombre del producto */
+.tipo-promocion {
+  font-size: 1.25rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+}
+
+/* El nombre del producto destaca más que la etiqueta */
+.titulo-producto-carrusel {
+  margin-top: 0.75rem;
+  font-size: 2rem;
+}
+
 
 .nombre-carrusel del {
   /* Quita el tachado original del del para poner otro */
@@ -271,6 +303,20 @@ footer {
       /* Evita que se repita el fondo del 'del' dejando solo una línea */
     ) no-repeat left 50% / 100% 1px;
   margin-right: 20px;
+}
+
+/* Mismo ancho y centrado que la presentación */
+.catalogo {
+  width: 94%;
+  max-width: 90rem;
+  margin: 0 auto;
+  padding-top: 2rem;
+}
+
+.catalogo h2 {
+  margin-bottom: 1.5rem;
+  color: var(--color-texto);
+  margin-left: 2rem;
 }
 
 
@@ -285,21 +331,29 @@ footer {
    ========================================= */
 
 /* Sección completa de presentación */
+/*
 .presentacion {
   outline: 3px solid red;
 }
+*/
 
 /* Contenedor que agrupa texto e imagen */
+/*
 .contenido-presentacion {
   outline: 3px solid blue;
 }
+*/
 
 /* Div del texto */
+/*
 .contenido-presentacion>div:first-child {
   outline: 3px solid green;
 }
+*/
 
 /* Div de la imagen y los botones */
+/*
 .contenido-presentacion>div:last-child {
   outline: 3px solid orange;
 }
+*/
