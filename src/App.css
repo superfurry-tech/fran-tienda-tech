@@ -319,6 +319,60 @@ footer {
   margin-left: 2rem;
 }
 
+.detalle-producto {
+  width: 94%;
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 3rem 0;
+  color: var(--color-texto);
+}
+
+/* Dos columnas: imagen e información */
+.contenido-detalle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+}
+
+.contenido-detalle img {
+  width: 100%;
+  max-height: 25rem;
+  object-fit: contain;
+  display: block;
+}
+
+.informacion-producto h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.informacion-producto p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.precio-producto {
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+.detalle-producto a {
+  color: var(--color-texto);
+}
+
+.detalle-producto a:hover {
+  color: var(--color-acento);
+}
+
+/* En pantallas pequeñas, imagen encima de la información */
+@media (max-width: 700px) {
+  .contenido-detalle {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
 
 
 
