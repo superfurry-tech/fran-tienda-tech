@@ -13,11 +13,10 @@ function DetalleProducto() {
 
     // Busca el producto cuyo id coincide con el de la dirección.
     // Si no existe, find devuelve undefined.
-    // Pendiente: mostrar sus datos o un mensaje si no se encuentra. No map porque se busca un solo producto, no se generan tarjetas para todos.
+    // Usamos find porque buscamos un solo producto; map recorrería la lista para transformarla.
     const producto = productos.find(producto => producto.id === id)
 
     // Si no se encuentra el producto, muestra un mensaje y termina aquí.
-    // Pendiente: mostrar los datos cuando el producto sí existe.
     if (!producto) {
         return (
             <main>
@@ -30,7 +29,6 @@ function DetalleProducto() {
     }
 
     // Muestra los datos del producto encontrado en el JSON.
-    // Pendiente: dar estilo al detalle y añadir la función de carrito.
     // Muestra imagen e información en dos bloques para distribuirlos con CSS.
     // Pendiente: añadir la función de carrito.
     return (

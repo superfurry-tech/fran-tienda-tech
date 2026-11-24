@@ -12,8 +12,7 @@ function Producto({ id, nombre, precio, imagen }: {
     return (
         <article className="tarjeta-producto">
             {/* Imagen y nombre están dentro del enlace: ambos se pueden pulsar.
-                ${id} inserta el número del producto, por ejemplo /producto/3.
-                Pendiente: conectar esa dirección con la página de detalle. */}
+                ${id} inserta el número del producto, por ejemplo /producto/3.*/}
             <a href={`/producto/${id}`}>
                 <img src={imagen} alt={nombre} />
                 <h3>{nombre}</h3>

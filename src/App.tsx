@@ -22,19 +22,24 @@ import Producto from './components/Producto'
 // Importa la página donde mostraremos el producto seleccionado.
 import DetalleProducto from './pages/DetalleProducto'
 
-
-// Rutas de las imágenes del carrusel, almacenadas en un array de strings. Cada elemento es un string, no hay necesidad de crear objetos como en el array de productos.
-const imagenes = [
-  "/images/portada_1.png",
-  "/images/portada_2.png",
-  "/images/portada_3.png"
-]
-
-//Textos que corresponden a las imágenes del carrusel. Cada texto ocupa la misma posición que su imagen en el array imagenes.
-const etiquetas = [
-  "CREA TU PROPIO ESTUDIO",
-  "NOVEDAD",
-  "OFERTA"
+// Agrupa la imagen, el texto y el producto de cada diapositiva.
+// productoId corresponde al id del producto en productos.json.
+const diapositivas = [
+  {
+    imagen: "/images/portada_1.png",
+    etiqueta: "CREA TU PROPIO ESTUDIO"
+  },
+  {
+    imagen: "/images/portada_2.png",
+    etiqueta: "NOVEDAD",
+    productoId: 4
+  },
+  {
+    imagen: "/images/portada_3.png",
+    etiqueta: "OFERTA",
+    productoId: 3,
+    precioAnterior: 200
+  }
 ]
 
 // Componente principal de la tienda.
@@ -46,25 +51,33 @@ function App() {
   const esPaginaProductos = window.location.pathname === '/productos'
 
   // Comprueba si la dirección empieza por /producto/, como /producto/3.
-  // Pendiente: mostrar el detalle y obtener el id del producto.
   const esPaginaDetalle = window.location.pathname.startsWith('/producto/')
 
   // Índice de la imagen que se muestra en el carrusel. Inicialmente es la primera (0).
   const [indice, setIndice] = useState(0)
 
-  // Avanza a la siguiente imagen. Si estamos en la última, vuelve a la primera.
+  // Obtiene los datos de la diapositiva que corresponde al índice actual.
+  const diapositivaActual = diapositivas[indice]
+
+  // Busca en el JSON el producto anunciado por la diapositiva actual.
+  // Si no tiene productoId, como la primera imagen, no encuentra ninguno.
+  const productoPromocionado = productos.find(
+    producto => producto.id === diapositivaActual.productoId
+  )
+
+  // Avanza a la siguiente imagen. Si está en la última, vuelve a la primera.
   function siguienteImagen() {
-    if (indice === imagenes.length - 1) {
+    if (indice === diapositivas.length - 1) {
       setIndice(0)
     } else {
       setIndice(indice + 1)
     }
   }
 
-  // Retrocede una imagen. Si estamos en la primera, pasa a la última.
+  // Retrocede una imagen. Si esta en la primera, pasa a la última.
   function anteriorImagen() {
     if (indice === 0) {
-      setIndice(imagenes.length - 1)
+      setIndice(diapositivas.length - 1)
     } else {
       setIndice(indice - 1)
     }
@@ -91,7 +104,7 @@ function App() {
       </header>
       {/* Según la dirección, muestra el catálogo, el detalle o el inicio.
     El header y el footer se mantienen en las tres vistas.
-    Pendiente: cargar los datos del producto en el detalle y conectar el carrito. */}
+    Pendiente: conectar el carrito. */}
       {esPaginaProductos ? (
         <Productos />
       ) : esPaginaDetalle ? (
@@ -108,30 +121,48 @@ function App() {
 
               <div className="carrusel">
                 {/* Muestra la imagen correspondiente al índice actual. */}
-                <img src={imagenes[indice]} alt="Estudio casero de podcast" />
+                <img src={diapositivaActual.imagen} alt="Estudio casero de podcast" />
                 {/* Muestra el texto que corresponde a esa misma imagen. */}
                 <div className="etiqueta-carrusel">
                   {/* La primera imagen no necesita otra clase. En NOVEDAD y OFERTA añadimos una clase para darles un estilo distinto. */}
                   <p className={indice === 0 ? "" : "tipo-promocion"}>
-                    {etiquetas[indice]}
+                    {diapositivaActual.etiqueta}
                   </p>
 
                   {/* && significa 'mostrar solo si cumple la condición'. */}
                   {/* Conserva el estilo común y añade otro para destacar el nombre */}
-                  {indice === 1 && <p className="nombre-carrusel titulo-producto-carrusel">
-                    <strong>AKG K-702</strong>
-                  </p>}
+                  {/* Si la diapositiva anuncia un producto, muestra su nombre desde el JSON.*/}
+                  {productoPromocionado && (
+                    <p className="nombre-carrusel titulo-producto-carrusel">
+                      <strong>{productoPromocionado.nombre}</strong>
+                    </p>
+                  )}
 
-                  {indice === 2 && (
-                    <>
-                      {/* Conserva el estilo común y añade otro para destacar el nombre */}
-                      <p className="nombre-carrusel titulo-producto-carrusel">
-                        <strong>Rode PodMic USB</strong>
-                      </p>
-                      <p className="nombre-carrusel">
-                        <del>200 €</del> <strong>177 €</strong>
-                      </p>
-                    </>
+                  {/* Muestra los precios de OFERTA: el anterior tachado y el actual en negrita.
+    Solo aparece si hay un producto y la diapositiva tiene precioAnterior.*/}
+                  {productoPromocionado && diapositivaActual.precioAnterior !== undefined && (
+                    <p className="nombre-carrusel">
+                      <del>
+                        {diapositivaActual.precioAnterior.toLocaleString('es-ES', {
+                          useGrouping: 'always'
+                        })} €
+                      </del>
+                      <strong>
+                        {productoPromocionado.precio.toLocaleString('es-ES', {
+                          useGrouping: 'always'
+                        })} €
+                      </strong>
+                    </p>
+                  )}
+
+                  {/* Abre el detalle del producto anunciado.*/}
+                  {productoPromocionado && (
+                    <a
+                      className="enlace-promocion"
+                      href={`/producto/${productoPromocionado.id}`}
+                    >
+                      Ver producto
+                    </a>
                   )}
                 </div>
                 <div className="botones-carrusel">

@@ -365,6 +365,25 @@ footer {
   color: var(--color-acento);
 }
 
+/* Enlace con los mismos colores que las flechas del carrusel */
+.enlace-promocion {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: normal;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  border-radius: 0.375rem;
+  text-decoration: none;
+  text-shadow: none;
+}
+
+/* Cambia ligeramente el fondo al pasar el ratón */
+.enlace-promocion:hover {
+  background-color: var(--color-secundario);
+}
+
 /* En pantallas pequeñas, imagen encima de la información */
 @media (max-width: 700px) {
   .contenido-detalle {
