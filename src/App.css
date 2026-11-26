@@ -398,6 +398,28 @@ footer {
   margin-left: 2rem;
 }
 
+/* Separa y centra los enlaces de páginas debajo del catálogo. */
+.paginacion {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.5rem 0;
+}
+
+.paginacion a {
+  padding: 0.5rem 0.75rem;
+  color: var(--color-texto);
+  text-decoration: none;
+  border: 1px solid var(--color-secundario);
+  border-radius: 0.25rem;
+}
+
+/* Destaca la página actual y el enlace bajo el ratón. */
+.paginacion a[aria-current="page"],
+.paginacion a:hover {
+  background-color: var(--color-secundario);
+}
+
 .detalle-producto {
   width: 94%;
   max-width: 70rem;
