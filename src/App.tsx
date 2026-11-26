@@ -4,7 +4,8 @@ import {
   BsArrowRight,
   BsCart3,
   BsInstagram,
-  BsYoutube
+  BsYoutube,
+  BsSearch
 } from "react-icons/bs";
 
 // Para gestionar valores que cambian en el componente.
@@ -46,6 +47,9 @@ const diapositivas = [
 // .map() recorre el array y genera un elemento React <Producto /> por cada producto.
 function App() {
   const nombre = 'Mi Podcast'
+
+  // Recupera la búsqueda de la dirección para mantenerla visible en el campo.
+  const busquedaActual = new URLSearchParams(window.location.search).get('buscar') ?? ''
 
   // Comprueba si la dirección actual corresponde a la página de productos. Es true si estamos en /productos y false en cualquier otra dirección. True muestra el catálogo completo, false muestra la página de inicio.
   const esPaginaProductos = window.location.pathname === '/productos'
@@ -94,6 +98,21 @@ function App() {
           <h1>{nombre}</h1>
         </div>
 
+        <div className="acciones-header">
+          {/* GET envía el texto a /productos?buscar=... con la lupa o con Enter. */}
+          <form className="buscador-header" action="/productos" method="get" role="search">
+            <input
+              type="search"
+              name="buscar"
+              placeholder="Buscar productos…"
+              aria-label="Buscar productos por nombre o descripción"
+              defaultValue={busquedaActual}
+            />
+            <button type="submit" aria-label="Buscar productos">
+              <BsSearch aria-hidden="true" />
+            </button>
+          </form>
+
         <nav aria-label="Navegación principal">
           <a href="/">Inicio</a>
           {/*Al pulsarlo, el navegador abre la dirección /productos. Pero el enlace no sabe qué componentes mostrar. Tiene que comprobar en const esPaginaProductos = window.location.pathname === '/productos'*/}
@@ -101,6 +120,7 @@ function App() {
           <a href="/carrito" aria-label="Carrito">
             <BsCart3 aria-hidden="true" /></a>
         </nav>
+        </div>
       </header>
       {/* Según la dirección, muestra el catálogo, el detalle o el inicio.
     El header y el footer se mantienen en las tres vistas.

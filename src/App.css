@@ -34,6 +34,82 @@ header nav {
   font-size: 1.125rem;
 }
 
+/* Buscador y menú forman el grupo derecho y bajan de fila si falta espacio. */
+.acciones-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  max-width: 100%;
+}
+
+/* Campo y lupa comparten un único fondo y borde. */
+.buscador-header {
+  display: flex;
+  align-items: center;
+  width: 16rem;
+  max-width: 100%;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  border: 1px solid var(--color-texto);
+  border-radius: 0.25rem;
+}
+
+.buscador-header input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: transparent;
+  color: var(--color-texto);
+  font: inherit;
+  font-size: 1rem;
+}
+
+.buscador-header input::placeholder {
+  color: var(--color-texto);
+  opacity: 1;
+}
+
+.buscador-header button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: transparent;
+  color: var(--color-acento);
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+/* El foco sigue siendo visible al navegar con el teclado. */
+.buscador-header input:focus-visible,
+.buscador-header button:focus-visible {
+  outline: 2px solid var(--color-acento);
+  outline-offset: 2px;
+}
+
+.resultado-busqueda {
+  margin: 1rem 0 1.5rem;
+}
+
+@media (max-width: 700px) {
+  .acciones-header {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .buscador-header {
+    width: 100%;
+  }
+}
+
 /* Un poco de tamaño extra al icono del carrito */
 header nav a svg {
   font-size: 1.5rem;
@@ -56,6 +132,7 @@ main {
 
 .presentacion {
   background-color: var(--color-presentacion);
+  padding: 1.5rem 0;
 }
 
 footer {
@@ -211,6 +288,8 @@ footer {
 
 .carrusel {
   position: relative;
+  border-radius: 0.5rem;
+  overflow: hidden;
 }
 
 .botones-carrusel {
